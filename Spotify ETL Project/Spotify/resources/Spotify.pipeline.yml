@@ -1,0 +1,14 @@
+# The main pipeline for Spotify
+resources:
+  pipelines:
+    Spotify_pipeline:
+      name: Spotify_pipeline
+      catalog: data_transformation
+      schema: Spotify_${bundle.target}
+      serverless: true
+      libraries:
+        - notebook:
+            path: ../src/pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src
